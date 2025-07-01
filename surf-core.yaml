@@ -1,100 +1,186 @@
+# surf_core.yml
+# Recipe para txAdmin – Surf Core by Enjoy
+
 name: Surf Core
 author: Enjoy
-description: Servidor modular con Qbox Framework y recursos esenciales
+description: >
+  Servidor Qbox organizado con ox_lib, ox_inventory, ox_target, pma-voice, envi-interact y más.
+  Modular y limpio.
 
 tasks:
-  # BASE CORE
-  - action: download_github
-    src: https://github.com/qbox-project/qbx_core
-    ref: main
-    dest: ./resources/[core]/qbx_core
+  - action: create_folder
+    path: ./resources/[core]
 
-  # OX LIB
-  - action: download_github
-    src: https://github.com/overextended/ox_lib
-    ref: main
-    dest: ./resources/[ox]/ox_lib
+  - action: create_folder
+    path: ./resources/[ox]
 
-  # OX TARGET
-  - action: download_github
-    src: https://github.com/overextended/ox_target
-    ref: main
-    dest: ./resources/[ox]/ox_target
+  - action: create_folder
+    path: ./resources/[qbx]
 
-  # OX INVENTORY
-  - action: download_github
-    src: https://github.com/overextended/ox_inventory
-    ref: main
-    dest: ./resources/[ox]/ox_inventory
+  - action: create_folder
+    path: ./resources/[standalone]
 
-  # INTERACCIÓN (envi-interact)
-  - action: download_github
-    src: https://github.com/envi-dev/envi-interact
-    ref: main
-    dest: ./resources/[standalone]/envi-interact
+  - action: create_folder
+    path: ./resources/[voice]
 
-  # MANA AUDIO (para sonidos y notificaciones)
-  - action: download_github
-    src: https://github.com/manakarDev/mana-audio
-    ref: main
-    dest: ./resources/[standalone]/mana_audio
+  - action: create_folder
+    path: ./resources/[mapas]
 
-  # EMOTES MENU
-  - action: download_github
-    src: https://github.com/Scullyy/emotemenu
-    ref: main
-    dest: ./resources/[standalone]/scully_emotemenu
+  - action: create_folder
+    path: ./resources/[vehiculos]
 
-  # MHACKING (para minijuegos tipo hackeo)
-  - action: download_github
-    src: https://github.com/Gabz-Hub/mhacking
-    ref: main
-    dest: ./resources/[standalone]/mhacking
+  - action: create_folder
+    path: ./resources/[props]
 
-  # SAFECRACKER (cajas fuertes, compatible ox)
-  - action: download_github
-    src: https://github.com/overextended/safecracker
-    ref: main
-    dest: ./resources/[standalone]/safecracker
+  - action: create_folder
+    path: ./resources/[guns]
 
-  # BOB74 IPL (mapa y props)
-  - action: download_github
-    src: https://github.com/Bob74/bob74_ipl
-    ref: master
-    dest: ./resources/[assets]/mapas/bob74_ipl
+  # Framework Qbox
+  - action: download
+    url: https://github.com/qbox-project/qbx_core/archive/refs/heads/main.zip
+    dest: ./resources/[core]/qbx_core.zip
+  - action: unzip
+    src: ./resources/[core]/qbx_core.zip
+    dest: ./resources/[core]
+  - action: remove
+    path: ./resources/[core]/qbx_core.zip
 
-  # ULTRA VOLTLAB (efectos eléctricos, props especiales)
-  - action: download_github
-    src: https://github.com/ultra-voltlab/ultra-voltlab
-    ref: main
-    dest: ./resources/[assets]/props/ultra-voltlab
+  # ox_lib
+  - action: download
+    url: https://github.com/overextended/ox_lib/archive/refs/heads/main.zip
+    dest: ./resources/[ox]/ox_lib.zip
+  - action: unzip
+    src: ./resources/[ox]/ox_lib.zip
+    dest: ./resources/[ox]
+  - action: remove
+    path: ./resources/[ox]/ox_lib.zip
 
-  # ILLENIUM APPEARANCE (ropa, compatibilidad)
-  - action: download_github
-    src: https://github.com/iLLeniumStudios/illenium-appearance
-    ref: main
-    dest: ./resources/[standalone]/illenium-appearance
+  # ox_target
+  - action: download
+    url: https://github.com/overextended/ox_target/archive/refs/heads/main.zip
+    dest: ./resources/[ox]/ox_target.zip
+  - action: unzip
+    src: ./resources/[ox]/ox_target.zip
+    dest: ./resources/[ox]
+  - action: remove
+    path: ./resources/[ox]/ox_target.zip
 
-  # MUGSHOT BASE64 (capturas faciales)
-  - action: download_github
-    src: https://github.com/BaziForYou/MugShotBase64
-    ref: main
-    dest: ./resources/[standalone]/MugShotBase64
+  # ox_inventory
+  - action: download
+    url: https://github.com/overextended/ox_inventory/archive/refs/heads/main.zip
+    dest: ./resources/[ox]/ox_inventory.zip
+  - action: unzip
+    src: ./resources/[ox]/ox_inventory.zip
+    dest: ./resources/[ox]
+  - action: remove
+    path: ./resources/[ox]/ox_inventory.zip
 
-  # SCREENSHOT-BASIC (integración para fotos)
-  - action: download_github
-    src: https://github.com/citizenfx/screenshot-basic
-    ref: master
-    dest: ./resources/[standalone]/screenshot-basic
+  # envi-interact
+  - action: download
+    url: https://github.com/envi-dev/envi-interact/archive/refs/heads/main.zip
+    dest: ./resources/[standalone]/envi-interact.zip
+  - action: unzip
+    src: ./resources/[standalone]/envi-interact.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/envi-interact.zip
 
-  # PMA-VOICE (sistema de voz)
-  - action: download_github
-    src: https://github.com/AvarianKnight/pma-voice
-    ref: main
-    dest: ./resources/[voice]/pma-voice
+  # mana-audio
+  - action: download
+    url: https://github.com/manakarDev/mana-audio/archive/refs/heads/main.zip
+    dest: ./resources/[standalone]/mana-audio.zip
+  - action: unzip
+    src: ./resources/[standalone]/mana-audio.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/mana-audio.zip
 
-serverFiles:
-  - config/server.cfg
-  - config/voice.cfg
-  - config/ox.cfg
+  # scully_emotemenu
+  - action: download
+    url: https://github.com/Scullyy/emotemenu/archive/refs/heads/main.zip
+    dest: ./resources/[standalone]/scully_emotemenu.zip
+  - action: unzip
+    src: ./resources/[standalone]/scully_emotemenu.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/scully_emotemenu.zip
 
+  # mhacking
+  - action: download
+    url: https://github.com/Gabz-Hub/mhacking/archive/refs/heads/main.zip
+    dest: ./resources/[standalone]/mhacking.zip
+  - action: unzip
+    src: ./resources/[standalone]/mhacking.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/mhacking.zip
+
+  # safecracker
+  - action: download
+    url: https://github.com/overextended/safecracker/archive/refs/heads/main.zip
+    dest: ./resources/[standalone]/safecracker.zip
+  - action: unzip
+    src: ./resources/[standalone]/safecracker.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/safecracker.zip
+
+  # bob74_ipl
+  - action: download
+    url: https://github.com/Bob74/bob74_ipl/archive/refs/heads/master.zip
+    dest: ./resources/[mapas]/bob74_ipl.zip
+  - action: unzip
+    src: ./resources/[mapas]/bob74_ipl.zip
+    dest: ./resources/[mapas]
+  - action: remove
+    path: ./resources/[mapas]/bob74_ipl.zip
+
+  # ultra-voltlab
+  - action: download
+    url: https://github.com/ultra-hub/ultra-voltlab/archive/refs/heads/main.zip
+    dest: ./resources/[props]/ultra-voltlab.zip
+  - action: unzip
+    src: ./resources/[props]/ultra-voltlab.zip
+    dest: ./resources/[props]
+  - action: remove
+    path: ./resources/[props]/ultra-voltlab.zip
+
+  # illenium-appearance
+  - action: download
+    url: https://github.com/iLLeniumStudios/illenium-appearance/archive/refs/heads/main.zip
+    dest: ./resources/[standalone]/illenium-appearance.zip
+  - action: unzip
+    src: ./resources/[standalone]/illenium-appearance.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/illenium-appearance.zip
+
+  # MugShotBase64
+  - action: download
+    url: https://github.com/BaziForYou/MugShotBase64/archive/refs/heads/main.zip
+    dest: ./resources/[standalone]/MugShotBase64.zip
+  - action: unzip
+    src: ./resources/[standalone]/MugShotBase64.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/MugShotBase64.zip
+
+  # screenshot-basic
+  - action: download
+    url: https://github.com/citizenfx/screenshot-basic/archive/refs/heads/master.zip
+    dest: ./resources/[standalone]/screenshot-basic.zip
+  - action: unzip
+    src: ./resources/[standalone]/screenshot-basic.zip
+    dest: ./resources/[standalone]
+  - action: remove
+    path: ./resources/[standalone]/screenshot-basic.zip
+
+  # pma-voice
+  - action: download
+    url: https://github.com/AvarianKnight/pma-voice/archive/refs/heads/main.zip
+    dest: ./resources/[voice]/pma-voice.zip
+  - action: unzip
+    src: ./resources/[voice]/pma-voice.zip
+    dest: ./resources/[voice]
+  - action: remove
+    path: ./resources/[voice]/pma-voice.zip
