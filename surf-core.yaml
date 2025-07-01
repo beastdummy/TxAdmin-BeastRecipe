@@ -1,0 +1,100 @@
+name: Surf Core
+author: Enjoy
+description: Servidor modular con Qbox Framework y recursos esenciales
+
+tasks:
+  # BASE CORE
+  - action: download_github
+    src: https://github.com/qbox-project/qbx_core
+    ref: main
+    dest: ./resources/[core]/qbx_core
+
+  # OX LIB
+  - action: download_github
+    src: https://github.com/overextended/ox_lib
+    ref: main
+    dest: ./resources/[ox]/ox_lib
+
+  # OX TARGET
+  - action: download_github
+    src: https://github.com/overextended/ox_target
+    ref: main
+    dest: ./resources/[ox]/ox_target
+
+  # OX INVENTORY
+  - action: download_github
+    src: https://github.com/overextended/ox_inventory
+    ref: main
+    dest: ./resources/[ox]/ox_inventory
+
+  # INTERACCIÓN (envi-interact)
+  - action: download_github
+    src: https://github.com/envi-dev/envi-interact
+    ref: main
+    dest: ./resources/[standalone]/envi-interact
+
+  # MANA AUDIO (para sonidos y notificaciones)
+  - action: download_github
+    src: https://github.com/manakarDev/mana-audio
+    ref: main
+    dest: ./resources/[standalone]/mana_audio
+
+  # EMOTES MENU
+  - action: download_github
+    src: https://github.com/Scullyy/emotemenu
+    ref: main
+    dest: ./resources/[standalone]/scully_emotemenu
+
+  # MHACKING (para minijuegos tipo hackeo)
+  - action: download_github
+    src: https://github.com/Gabz-Hub/mhacking
+    ref: main
+    dest: ./resources/[standalone]/mhacking
+
+  # SAFECRACKER (cajas fuertes, compatible ox)
+  - action: download_github
+    src: https://github.com/overextended/safecracker
+    ref: main
+    dest: ./resources/[standalone]/safecracker
+
+  # BOB74 IPL (mapa y props)
+  - action: download_github
+    src: https://github.com/Bob74/bob74_ipl
+    ref: master
+    dest: ./resources/[assets]/mapas/bob74_ipl
+
+  # ULTRA VOLTLAB (efectos eléctricos, props especiales)
+  - action: download_github
+    src: https://github.com/ultra-voltlab/ultra-voltlab
+    ref: main
+    dest: ./resources/[assets]/props/ultra-voltlab
+
+  # ILLENIUM APPEARANCE (ropa, compatibilidad)
+  - action: download_github
+    src: https://github.com/iLLeniumStudios/illenium-appearance
+    ref: main
+    dest: ./resources/[standalone]/illenium-appearance
+
+  # MUGSHOT BASE64 (capturas faciales)
+  - action: download_github
+    src: https://github.com/BaziForYou/MugShotBase64
+    ref: main
+    dest: ./resources/[standalone]/MugShotBase64
+
+  # SCREENSHOT-BASIC (integración para fotos)
+  - action: download_github
+    src: https://github.com/citizenfx/screenshot-basic
+    ref: master
+    dest: ./resources/[standalone]/screenshot-basic
+
+  # PMA-VOICE (sistema de voz)
+  - action: download_github
+    src: https://github.com/AvarianKnight/pma-voice
+    ref: main
+    dest: ./resources/[voice]/pma-voice
+
+serverFiles:
+  - config/server.cfg
+  - config/voice.cfg
+  - config/ox.cfg
+
