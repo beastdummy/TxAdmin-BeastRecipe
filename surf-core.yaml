@@ -104,13 +104,13 @@ tasks:
 
   # STANDALONE
 
-  # clean_chat
+  # dirk_chat
   - action: download_file
-    path: ./tmp/clean_chat.zip
-    url: https://github.com/Clean-Server-Pack/clean_chat/releases/download/latest_production/clean_chat.zip
+    path: ./tmp/dirk_chat.zip
+    url: https://github.com/DirkDigglerz/dirk_chat
   - action: unzip
     dest: ./resources/[standalone]
-    src: ./tmp/clean_chat.zip
+    src: ./tmp/dirk_chat.zip
 
   # bob74_ipl
   - action: download_github
