@@ -107,7 +107,7 @@ tasks:
   # dirk_chat
   - action: download_file
     path: ./tmp/dirk_chat.zip
-    url: https://github.com/DirkDigglerz/dirk_chat
+    url: https://github.com/DirkDigglerz/dirk_chat/releases/download/latest_production/dirk_chat.zip
   - action: unzip
     dest: ./resources/[standalone]
     src: ./tmp/dirk_chat.zip
