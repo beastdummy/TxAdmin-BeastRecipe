@@ -11,7 +11,7 @@ tasks:
   
   # Framework Qbox
   - action: download_github
-    src: https://github.com/beastdummy/TxAdmin-BeastRecipe
+    src: https://github.com/beastdummy/txadmin-recipe
     ref: main
     dest: ./tmp/qbox
 
@@ -20,20 +20,20 @@ tasks:
     dest: ./server.cfg
 
   - action: move_path
-    src: ./tmp/qbox/permissions.cfg
-    dest: ./permissions.cfg
+    src: ./tmp/qbox/config/permissions.cfg
+    dest: ./config/permissions.cfg
 
   - action: move_path
-    src: ./tmp/qbox/ox.cfg
-    dest: ./ox.cfg
+    src: ./tmp/qbox/config/ox.cfg
+    dest: ./config/ox.cfg
 
   - action: move_path
-    src: ./tmp/qbox/voice.cfg
-    dest: ./voice.cfg
+    src: /tmp/qbox/config/voice.cfg
+    dest: ./config/voice.cfg
 
   - action: move_path
-    src: ./tmp/qbox/misc.cfg
-    dest: ./misc.cfg
+    src: /tmp/qbox/config/misc.cfg
+    dest: ./config/misc.cfg
 
   - action: move_path
     src: ./tmp/qbox/myLogo.png
