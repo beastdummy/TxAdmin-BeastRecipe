@@ -8,179 +8,218 @@ description: >
   Modular y limpio.
 
 tasks:
-  - action: create_folder
-    path: ./resources/[core]
-
-  - action: create_folder
-    path: ./resources/[ox]
-
-  - action: create_folder
-    path: ./resources/[qbx]
-
-  - action: create_folder
-    path: ./resources/[standalone]
-
-  - action: create_folder
-    path: ./resources/[voice]
-
-  - action: create_folder
-    path: ./resources/[mapas]
-
-  - action: create_folder
-    path: ./resources/[vehiculos]
-
-  - action: create_folder
-    path: ./resources/[props]
-
-  - action: create_folder
-    path: ./resources/[guns]
-
+  
   # Framework Qbox
-  - action: download
-    url: https://github.com/qbox-project/qbx_core/archive/refs/heads/main.zip
-    dest: ./resources/[core]/qbx_core.zip
-  - action: unzip
-    src: ./resources/[core]/qbx_core.zip
-    dest: ./resources/[core]
-  - action: remove
-    path: ./resources/[core]/qbx_core.zip
+  - action: download_github
+    src: https://github.com/beastdummy/txadmin-recipe
+    ref: main
+    dest: ./tmp/qbox
 
-  # ox_lib
-  - action: download
-    url: https://github.com/overextended/ox_lib/archive/refs/heads/main.zip
-    dest: ./resources/[ox]/ox_lib.zip
+  - action: move_path
+    src: ./tmp/qbox/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path
+    src: ./tmp/qbox/permissions.cfg
+    dest: ./permissions.cfg
+
+  - action: move_path
+    src: ./tmp/qbox/ox.cfg
+    dest: ./ox.cfg
+
+  - action: move_path
+    src: ./tmp/qbox/voice.cfg
+    dest: ./voice.cfg
+
+  - action: move_path
+    src: ./tmp/qbox/misc.cfg
+    dest: ./misc.cfg
+
+  - action: move_path
+    src: ./tmp/qbox/myLogo.png
+    dest: ./myLogo.png
+  
+  - action: ensure_dir
+    path: ./resources
+
+  # Prepare Database
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/qbox/qbox.sql
+
+  # OX
+  - action: download_file
+    path: ./tmp/ox_lib.zip
+    url: https://github.com/communityox/ox_lib/releases/latest/download/ox_lib.zip
   - action: unzip
-    src: ./resources/[ox]/ox_lib.zip
     dest: ./resources/[ox]
-  - action: remove
-    path: ./resources/[ox]/ox_lib.zip
+    src: ./tmp/ox_lib.zip
 
-  # ox_target
-  - action: download
-    url: https://github.com/overextended/ox_target/archive/refs/heads/main.zip
-    dest: ./resources/[ox]/ox_target.zip
+  - action: download_file
+    path: ./tmp/ox_target.zip
+    url: https://github.com/communityox/ox_target/releases/latest/download/ox_target.zip
   - action: unzip
-    src: ./resources/[ox]/ox_target.zip
     dest: ./resources/[ox]
-  - action: remove
-    path: ./resources/[ox]/ox_target.zip
+    src: ./tmp/ox_target.zip
 
-  # ox_inventory
-  - action: download
-    url: https://github.com/overextended/ox_inventory/archive/refs/heads/main.zip
-    dest: ./resources/[ox]/ox_inventory.zip
+  - action: download_file
+    path: ./tmp/oxmysql.zip
+    url: https://github.com/communityox/oxmysql/releases/latest/download/oxmysql.zip
   - action: unzip
-    src: ./resources/[ox]/ox_inventory.zip
     dest: ./resources/[ox]
-  - action: remove
-    path: ./resources/[ox]/ox_inventory.zip
+    src: ./tmp/oxmysql.zip
 
-  # envi-interact
-  - action: download
-    url: https://github.com/envi-dev/envi-interact/archive/refs/heads/main.zip
-    dest: ./resources/[standalone]/envi-interact.zip
+  - action: download_file
+    path: ./tmp/ox_doorlock.zip
+    url: https://github.com/communityox/ox_doorlock/releases/latest/download/ox_doorlock.zip
   - action: unzip
-    src: ./resources/[standalone]/envi-interact.zip
-    dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/envi-interact.zip
+    dest: ./resources/[ox]
+    src: ./tmp/ox_doorlock.zip
 
-  # mana-audio
-  - action: download
-    url: https://github.com/manakarDev/mana-audio/archive/refs/heads/main.zip
-    dest: ./resources/[standalone]/mana-audio.zip
+  - action: download_file
+    path: ./tmp/ox_inventory.zip
+    url: https://github.com/communityox/ox_inventory/releases/latest/download/ox_inventory.zip
   - action: unzip
-    src: ./resources/[standalone]/mana-audio.zip
-    dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/mana-audio.zip
+    dest: ./resources/[ox]
+    src: ./tmp/ox_inventory.zip
 
-  # scully_emotemenu
-  - action: download
-    url: https://github.com/Scullyy/emotemenu/archive/refs/heads/main.zip
-    dest: ./resources/[standalone]/scully_emotemenu.zip
-  - action: unzip
-    src: ./resources/[standalone]/scully_emotemenu.zip
-    dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/scully_emotemenu.zip
+  - action: move_path
+    src: ./tmp/qbox/items.lua
+    dest: ./resources/[ox]/ox_inventory/data/items.lua
+    overwrite: true
 
-  # mhacking
-  - action: download
-    url: https://github.com/Gabz-Hub/mhacking/archive/refs/heads/main.zip
-    dest: ./resources/[standalone]/mhacking.zip
-  - action: unzip
-    src: ./resources/[standalone]/mhacking.zip
-    dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/mhacking.zip
+  - action: download_github
+    dest: ./tmp/qbox/
+    ref: main
+    src: https://github.com/Qbox-project/qbx_invimages
 
-  # safecracker
-  - action: download
-    url: https://github.com/overextended/safecracker/archive/refs/heads/main.zip
-    dest: ./resources/[standalone]/safecracker.zip
+  - action: move_path
+    src: ./tmp/qbox/images
+    dest: ./resources/[ox]/ox_inventory/web/images
+    overwrite: true
+
+  # Pause to prevent Github API throttling
+  - action: waste_time
+    seconds: 10
+
+  # STANDALONE
+
+  # clean_chat
+  - action: download_file
+    path: ./tmp/clean_chat.zip
+    url: https://github.com/Clean-Server-Pack/clean_chat/releases/download/latest_production/clean_chat.zip
   - action: unzip
-    src: ./resources/[standalone]/safecracker.zip
     dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/safecracker.zip
+    src: ./tmp/clean_chat.zip
 
   # bob74_ipl
-  - action: download
-    url: https://github.com/Bob74/bob74_ipl/archive/refs/heads/master.zip
-    dest: ./resources/[mapas]/bob74_ipl.zip
-  - action: unzip
-    src: ./resources/[mapas]/bob74_ipl.zip
-    dest: ./resources/[mapas]
-  - action: remove
-    path: ./resources/[mapas]/bob74_ipl.zip
+  - action: download_github
+    dest: ./resources/[standalone]/bob74_ipl
+    ref: master
+    src: https://github.com/Bob74/bob74_ipl
 
-  # ultra-voltlab
-  - action: download
-    url: https://github.com/ultra-hub/ultra-voltlab/archive/refs/heads/main.zip
-    dest: ./resources/[props]/ultra-voltlab.zip
-  - action: unzip
-    src: ./resources/[props]/ultra-voltlab.zip
-    dest: ./resources/[props]
-  - action: remove
-    path: ./resources/[props]/ultra-voltlab.zip
+  # safecracker
+  - action: download_github
+    dest: ./resources/[standalone]/safecracker
+    ref: main
+    src: https://github.com/qbox-project/safecracker
 
-  # illenium-appearance
-  - action: download
-    url: https://github.com/iLLeniumStudios/illenium-appearance/archive/refs/heads/main.zip
-    dest: ./resources/[standalone]/illenium-appearance.zip
+  # screencapture
+  - action: download_file
+    path: ./tmp/screencapture.zip
+    url: https://github.com/itschip/screencapture/releases/latest/download/screencapture.zip
   - action: unzip
-    src: ./resources/[standalone]/illenium-appearance.zip
     dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/illenium-appearance.zip
-
-  # MugShotBase64
-  - action: download
-    url: https://github.com/BaziForYou/MugShotBase64/archive/refs/heads/main.zip
-    dest: ./resources/[standalone]/MugShotBase64.zip
-  - action: unzip
-    src: ./resources/[standalone]/MugShotBase64.zip
-    dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/MugShotBase64.zip
+    src: ./tmp/screencapture.zip
 
   # screenshot-basic
-  - action: download
-    url: https://github.com/citizenfx/screenshot-basic/archive/refs/heads/master.zip
-    dest: ./resources/[standalone]/screenshot-basic.zip
+  - action: download_file
+    path: ./tmp/screenshot-basic.zip
+    url: https://github.com/project-error/screenshot-basic/releases/latest/download/screenshot-basic.zip
   - action: unzip
-    src: ./resources/[standalone]/screenshot-basic.zip
+    dest: ./resources/[standalone]/screenshot-basic
+    src: ./tmp/screenshot-basic.zip
+
+  # mhacking
+  - action: download_github
+    dest: ./resources/[standalone]/mhacking
+    ref: main
+    src: https://github.com/qbox-project/mhacking
+
+  - action: waste_time
+    seconds: 10
+
+  # scully_emotemenu
+  - action: download_github
+    dest: ./resources/[standalone]/scully_emotemenu
+    ref: main
+    src: https://github.com/Scullyy/scully_emotemenu
+
+  # ultra-voltlab
+  - action: download_github
+    dest: ./resources/[standalone]/ultra-voltlab
+    ref: main
+    src: https://github.com/ultrahacx/ultra-voltlab
+
+  # illenium-appearance
+  - action: download_file
+    path: ./tmp/illenium-appearance.zip
+    url: https://github.com/iLLeniumStudios/illenium-appearance/releases/latest/download/illenium-appearance.zip
+  - action: unzip
     dest: ./resources/[standalone]
-  - action: remove
-    path: ./resources/[standalone]/screenshot-basic.zip
+    src: ./tmp/illenium-appearance.zip
+
+  # mugshotbase64
+  - action: download_github
+    dest: ./resources/[standalone]/MugShotBase64
+    ref: main
+    src: https://github.com/BaziForYou/MugShotBase64
+    subpath: MugShotBase64
+
+  - action: download_file
+    url: https://raw.githubusercontent.com/BaziForYou/MugShotBase64/main/README.md
+    path: ./resources/[standalone]/MugShotBase64/README.md
+
+  - action: download_file
+    url: https://raw.githubusercontent.com/BaziForYou/MugShotBase64/main/LICENSE.md
+    path: ./resources/[standalone]/MugShotBase64/LICENSE.md
+
+  # informational
+  - action: download_github
+    dest: ./resources/[standalone]/informational
+    ref: main
+    src: https://github.com/Qbox-project/informational
+
+  # vehiclehandler
+  - action: download_file
+    path: ./tmp/vehiclehandler.zip
+    url: https://github.com/QuantumMalice/vehiclehandler/releases/latest/download/vehiclehandler.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/vehiclehandler.zip
+
+  # envi-interact
+  - action: download_file
+    path: ./tmp/envi-interact.zip
+    url: https://github.com/Envi-Scripts/envi-interact/archive/refs/heads/main.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/envi-interact.zip
+
+  # mana-audio
+  - action: download_file
+    path: ./tmp/mana_audio.zip
+    url: https://github.com/Manason/mana_audio/releases/latest/download/mana_audio.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/mana_audio.zip
 
   # pma-voice
-  - action: download
-    url: https://github.com/AvarianKnight/pma-voice/archive/refs/heads/main.zip
-    dest: ./resources/[voice]/pma-voice.zip
-  - action: unzip
-    src: ./resources/[voice]/pma-voice.zip
-    dest: ./resources/[voice]
-  - action: remove
-    path: ./resources/[voice]/pma-voice.zip
+  - action: download_github
+    dest: ./resources/[voice]/pma-voice
+    ref: main
+    src: https://github.com/AvarianKnight/pma-voice
+
+  # Clean up
+  - action: remove_path
+    path: ./tmp
