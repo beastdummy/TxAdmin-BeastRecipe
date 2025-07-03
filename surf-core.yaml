@@ -11,7 +11,7 @@ tasks:
   
   # Framework Qbox
   - action: download_github
-    src: https://github.com/beastdummy/txadmin-recipe
+    src: https://github.com/beastdummy/TxAdmin-BeastRecipe
     ref: main
     dest: ./tmp/qbox
 
