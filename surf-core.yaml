@@ -28,11 +28,11 @@ tasks:
     dest: ./config/ox.cfg
 
   - action: move_path
-    src: /tmp/qbox/config/voice.cfg
+    src: ./tmp/qbox/config/voice.cfg
     dest: ./config/voice.cfg
 
   - action: move_path
-    src: /tmp/qbox/config/misc.cfg
+    src: ./tmp/qbox/config/misc.cfg
     dest: ./config/misc.cfg
 
   - action: move_path
