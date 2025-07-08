@@ -104,19 +104,6 @@ tasks:
 
   # STANDALONE
 
-  # dirk_chat
-  - action: download_file
-    path: ./tmp/dirk_chat.zip
-    url: https://github.com/DirkDigglerz/dirk_chat/releases/download/latest_production/dirk_chat.zip
-  - action: unzip
-    dest: ./resources/[standalone]
-    src: ./tmp/dirk_chat.zip
-
-  # bob74_ipl
-  - action: download_github
-    dest: ./resources/[standalone]/bob74_ipl
-    ref: master
-    src: https://github.com/Bob74/bob74_ipl
 
   # safecracker
   - action: download_github
@@ -206,6 +193,14 @@ tasks:
     dest: ./resources/[standalone]
     src: ./tmp/envi-interact.zip
 
+  # sleepless_interact 
+  - action: download_file
+    path: ./tmp/sleepless_interact.zip
+    url: https://github.com/Sleepless-Development/sleepless_interact/releases/latest/download/sleepless_interact.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/sleepless_interact.zip
+
   # mana-audio
   - action: download_file
     path: ./tmp/mana_audio.zip
@@ -214,11 +209,96 @@ tasks:
     dest: ./resources/[standalone]
     src: ./tmp/mana_audio.zip
 
+  # xsound 
+  - action: download_github
+    src: https://github.com/Xogy/xsound
+    ref: master 
+    dest: ./resources/[standalone]/xsound
+
   # pma-voice
   - action: download_github
     dest: ./resources/[voice]/pma-voice
     ref: main
     src: https://github.com/AvarianKnight/pma-voice
+
+  #QBOX FRAMEWORK
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_scoreboard
+    ref: main
+    src: https://github.com/qbox-project/qbx_scoreboard
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_adminmenu
+    ref: main
+    src: https://github.com/qbox-project/qbx_adminmenu
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_management
+    ref: main
+    src: https://github.com/qbox-project/qbx_management
+  - action: query_database
+    file: ./resources/[qbx]/qbx_management/qbx_management.sql
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_radialmenu
+    ref: main
+    src: https://github.com/qbox-project/qbx_radialmenu
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_properties
+    ref: main
+    src: https://github.com/qbox-project/qbx_properties
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_cityhall
+    ref: main
+    src: https://github.com/qbox-project/qbx_cityhall
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_idcard
+    ref: main
+    src: https://github.com/Qbox-project/qbx_idcard
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_binoculars
+    ref: main
+    src: https://github.com/Qbox-project/qbx_binoculars
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_carwash
+    ref: main
+    src: https://github.com/Qbox-project/qbx_carwash
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_fireworks
+    ref: main
+    src: https://github.com/Qbox-project/qbx_fireworks
+
+  - action: download_github
+    dest: ./resources/[qbx]/qbx_density
+    ref: main
+    src: https://github.com/Qbox-project/qbx_density
+
+  - action: waste_time # prevent github throttling
+    seconds: 10
+    
+  #MAPAS
+  # bob74_ipl
+  - action: download_github
+    dest: ./resources/[assets]/[mapas]/bob74_ipl
+    ref: master
+    src: https://github.com/Bob74/bob74_ipl
+
+  - action: download_github
+    dest: ./resources/[defaultmaps]/dealer_map
+    ref: main
+    src: https://github.com/qbcore-framework/dealer_map
+
+  - action: download_github
+    dest: ./resources/[defaultmaps]/[prison_map]
+    ref: main
+    src: https://github.com/qbcore-framework/prison_map
 
   # Clean up
   - action: remove_path
